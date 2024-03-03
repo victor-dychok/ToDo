@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ToDo.Repository/1.0.0": {
+        "dependencies": {
+          "Common.Repository": "1.0.0",
+          "ToDoDomain": "1.0.0"
+        },
+        "runtime": {
+          "ToDo.Repository.dll": {}
+        }
+      },
+      "Common.Domain/1.0.0": {
+        "runtime": {
+          "Common.Domain.dll": {}
+        }
+      },
+      "Common.Repository/1.0.0": {
+        "dependencies": {
+          "Common.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Common.Repository.dll": {}
+        }
+      },
+      "ToDoDomain/1.0.0": {
+        "runtime": {
+          "ToDoDomain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ToDo.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ToDoDomain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
