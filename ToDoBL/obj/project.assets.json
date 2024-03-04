@@ -132,6 +132,20 @@
         "runtime": {
           "bin/placeholder/ToDoDomain.dll": {}
         }
+      },
+      "UserServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Common.Domain": "1.0.0",
+          "Common.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UserServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UserServices.dll": {}
+        }
       }
     }
   },
@@ -266,6 +280,11 @@
       "type": "project",
       "path": "../ToDoDomain/ToDoDomain.csproj",
       "msbuildProject": "../ToDoDomain/ToDoDomain.csproj"
+    },
+    "UserServices/1.0.0": {
+      "type": "project",
+      "path": "../UserServices/UserServices.csproj",
+      "msbuildProject": "../UserServices/UserServices.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -273,7 +292,8 @@
       "AutoMapper >= 13.0.1",
       "Common.Repository >= 1.0.0",
       "ToDo.Repository >= 1.0.0",
-      "ToDoDomain >= 1.0.0"
+      "ToDoDomain >= 1.0.0",
+      "UserServices >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -318,6 +338,9 @@
             },
             "D:\\учёба\\курсы\\ToDoDomain\\ToDoDomain.csproj": {
               "projectPath": "D:\\учёба\\курсы\\ToDoDomain\\ToDoDomain.csproj"
+            },
+            "D:\\учёба\\курсы\\UserServices\\UserServices.csproj": {
+              "projectPath": "D:\\учёба\\курсы\\UserServices\\UserServices.csproj"
             }
           }
         }

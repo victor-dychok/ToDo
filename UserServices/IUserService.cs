@@ -8,6 +8,6 @@ namespace UserServices
         public User? GetById(int id);
         public bool Delete(int id);
         public User? Add(User item);
-        public User? Put(int id, User newItem);
+        public User? Update(int id, User newItem);
     }
 }

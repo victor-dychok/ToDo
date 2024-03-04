@@ -1,5 +1,4 @@
-﻿
-using ToDoBL.dto;
+﻿using ToDoBL.dto;
 using ToDoDomain;
 
 namespace ToDoBL
@@ -10,8 +9,8 @@ namespace ToDoBL
         public TodoItem? GetById(int id);
         public TodoItem? GetByIdIsDone(int id);
         public bool Delete(int id);
-        public TodoItem? Add(TodoItem item);
-        public TodoItem? Put(int id, TodoItem newItem);
+        public TodoItem? Add(CreateToDo item);
+        public TodoItem? Update(UpdateToDo newItem);
         public TodoItem? Putch(int id, bool isDone);
     }
 }
