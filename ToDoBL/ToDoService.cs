@@ -76,8 +76,8 @@ namespace ToDoBL
 
         public TodoItem? Update(UpdateToDo updateDto)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<UpdateToDo, TodoItem>());
             var todoEntity = GetById(updateDto.Id);
+            todoEntity = _mapper.Map<UpdateToDo, TodoItem>(updateDto);
             if(todoEntity == null)
             {
                 return null;
@@ -91,6 +91,9 @@ namespace ToDoBL
         public TodoItem? Putch(int id, bool isDone)
         {
             var TodoItem = GetById(id);
+            if(TodoItem == null)
+            {  return null; }
+
             TodoItem.IsDone = isDone;
             return _toDoRepository.Update(TodoItem);
         }
