@@ -6,6 +6,7 @@ using AutoMapper.Internal;
 using AutoMapper;
 using Common.Domain;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace ToDoBL
 {
@@ -19,26 +20,36 @@ namespace ToDoBL
             IRepository<User> user,
             IMapper mapper)
         {
-            _toDoRepository = repository;
-            _users = user;
             _mapper = mapper;
-            _toDoRepository.Add(new TodoItem { Id =1, Label = "Lable", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 1});
-            _toDoRepository.Add(new TodoItem { Id =2, Label = "Lable", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 2});
-            _toDoRepository.Add(new TodoItem { Id =3, Label = "Lable", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 3});
-            _toDoRepository.Add(new TodoItem { Id =4, Label = "Lable", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 1});
 
+            _toDoRepository = repository;
 
-            _users.Add(new User { Id = 1, Name = "Vasia" });
-            _users.Add(new User { Id = 2, Name = "Sasha" });
-            _users.Add(new User { Id = 3, Name = "Petia" });
+            if(_toDoRepository.GetList().Count() == 0)
+            {
+                _toDoRepository.Add(new TodoItem { Id = 1, Label = "Lable 1", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 1 });
+                _toDoRepository.Add(new TodoItem { Id = 2, Label = "Lable 1 test", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 2 });
+                _toDoRepository.Add(new TodoItem { Id = 3, Label = "Lable 2", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 3 });
+                _toDoRepository.Add(new TodoItem { Id = 4, Label = "Lable 3", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 1 });
+            }
+
+            _users = user;
+            if(_users.GetList().Count() == 0)
+            {
+                _users.Add(new User { Id = 1, Name = "Vasia" });
+                _users.Add(new User { Id = 2, Name = "Sasha" });
+                _users.Add(new User { Id = 3, Name = "Petia" });
+            }
         }
-        public IEnumerable<TodoItem> GetList(int? offset, int? ownerId, int? limit = 10)
+        public IEnumerable<TodoItem> GetList(int? offset, int? ownerId, string? lable, int? limit = 10)
         {
-            return _toDoRepository.GetList(
+            // Expression<Func<TEntity, bool>>? predicate = null,
+            IEnumerable<TodoItem> result = _toDoRepository.GetList(
                 offset,
                 limit,
-                x=> x.OwnerId == ownerId,
+                d => (string.IsNullOrWhiteSpace(lable) || d.Label.Contains(lable, StringComparison.InvariantCultureIgnoreCase)) 
+                && (ownerId == null || d.OwnerId == ownerId.Value),
                 t => t.Id);
+            return result;
         }
 
         public TodoItem? GetById(int id)
