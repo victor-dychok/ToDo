@@ -21,7 +21,7 @@ namespace ToDoBL
             services.AddSingleton<IRepository<TodoItem>, BaseRepository<TodoItem>>();
             services.AddSingleton<IRepository<User>, BaseRepository<User>>();
             services.AddSingleton<IUserService, UserService>();
-            services.AddAutoMapper(typeof(UserServices.AutoMapperProfile));
+            services.AddAutoMapper(typeof(Mapper.AutoMapperProfile));
             return services;
         }
     }

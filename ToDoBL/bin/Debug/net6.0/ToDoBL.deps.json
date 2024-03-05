@@ -10,7 +10,6 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Common.Repository": "1.0.0",
-          "ToDo.Repository": "1.0.0",
           "ToDoDomain": "1.0.0",
           "UserServices": "1.0.0"
         },
@@ -83,15 +82,6 @@
           "Common.Repository.dll": {}
         }
       },
-      "ToDo.Repository/1.0.0": {
-        "dependencies": {
-          "Common.Repository": "1.0.0",
-          "ToDoDomain": "1.0.0"
-        },
-        "runtime": {
-          "ToDo.Repository.dll": {}
-        }
-      },
       "ToDoDomain/1.0.0": {
         "dependencies": {
           "Common.Interfaces": "1.0.0"
@@ -102,8 +92,10 @@
       },
       "UserServices/1.0.0": {
         "dependencies": {
+          "AutoMapper": "13.0.1",
           "Common.Domain": "1.0.0",
-          "Common.Repository": "1.0.0"
+          "Common.Repository": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "runtime": {
           "UserServices.dll": {}
@@ -163,11 +155,6 @@
       "sha512": ""
     },
     "Common.Repository/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ToDo.Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

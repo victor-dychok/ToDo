@@ -5,6 +5,7 @@ using Common.Repository;
 using AutoMapper.Internal;
 using AutoMapper;
 using Common.Domain;
+using System.Collections.Generic;
 
 namespace ToDoBL
 {
@@ -31,12 +32,12 @@ namespace ToDoBL
             _users.Add(new User { Id = 2, Name = "Sasha" });
             _users.Add(new User { Id = 3, Name = "Petia" });
         }
-        public IEnumerable<TodoItem> GetList(int? offset, string? lable, int? ownerId, int? limit = 10)
+        public IEnumerable<TodoItem> GetList(int? offset, int? ownerId, int? limit = 10)
         {
             return _toDoRepository.GetList(
                 offset,
                 limit,
-                null,
+                x=> x.OwnerId == ownerId,
                 t => t.Id);
         }
 
@@ -93,6 +94,5 @@ namespace ToDoBL
             TodoItem.IsDone = isDone;
             return _toDoRepository.Update(TodoItem);
         }
-
     }
 }

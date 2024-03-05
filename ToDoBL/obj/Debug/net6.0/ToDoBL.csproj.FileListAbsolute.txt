@@ -13,8 +13,6 @@ D:\учёба\курсы\ToDoBL\obj\Debug\net6.0\ToDoBL.dll
 D:\учёба\курсы\ToDoBL\obj\Debug\net6.0\refint\ToDoBL.dll
 D:\учёба\курсы\ToDoBL\obj\Debug\net6.0\ToDoBL.pdb
 D:\учёба\курсы\ToDoBL\obj\Debug\net6.0\ref\ToDoBL.dll
-D:\учёба\курсы\ToDoBL\bin\Debug\net6.0\ToDo.Repository.dll
-D:\учёба\курсы\ToDoBL\bin\Debug\net6.0\ToDo.Repository.pdb
 D:\учёба\курсы\ToDoBL\bin\Debug\net6.0\Common.Domain.dll
 D:\учёба\курсы\ToDoBL\bin\Debug\net6.0\Common.Repository.dll
 D:\учёба\курсы\ToDoBL\bin\Debug\net6.0\Common.Repository.pdb
