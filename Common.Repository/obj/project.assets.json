@@ -5,11 +5,24 @@
       "Common.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Common.Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/Common.Domain.dll": {}
+        }
+      },
+      "Common.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Common.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.Interfaces.dll": {}
         }
       }
     }
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../Common.Domain/Common.Domain.csproj",
       "msbuildProject": "../Common.Domain/Common.Domain.csproj"
+    },
+    "Common.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Common.Interfaces/Common.Interfaces.csproj",
+      "msbuildProject": "../Common.Interfaces/Common.Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Common.Domain >= 1.0.0"
+      "Common.Domain >= 1.0.0",
+      "Common.Interfaces >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -62,6 +81,9 @@
           "projectReferences": {
             "D:\\учёба\\курсы\\Common.Domain\\Common.Domain.csproj": {
               "projectPath": "D:\\учёба\\курсы\\Common.Domain\\Common.Domain.csproj"
+            },
+            "D:\\учёба\\курсы\\Common.Interfaces\\Common.Interfaces.csproj": {
+              "projectPath": "D:\\учёба\\курсы\\Common.Interfaces\\Common.Interfaces.csproj"
             }
           }
         }

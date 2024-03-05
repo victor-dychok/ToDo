@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Common.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Common.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.Interfaces.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Common.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Common.Interfaces/Common.Interfaces.csproj",
+      "msbuildProject": "../Common.Interfaces/Common.Interfaces.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Common.Interfaces >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\vitia\\.nuget\\packages\\": {},
@@ -40,7 +59,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\учёба\\курсы\\Common.Interfaces\\Common.Interfaces.csproj": {
+              "projectPath": "D:\\учёба\\курсы\\Common.Interfaces\\Common.Interfaces.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

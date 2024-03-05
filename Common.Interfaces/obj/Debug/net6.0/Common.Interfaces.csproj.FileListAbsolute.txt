@@ -1,0 +1,11 @@
+D:\учёба\курсы\Common.Interfaces\bin\Debug\net6.0\Common.Interfaces.deps.json
+D:\учёба\курсы\Common.Interfaces\bin\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\Common.Interfaces\bin\Debug\net6.0\Common.Interfaces.pdb
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\Common.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\Common.Interfaces.AssemblyInfoInputs.cache
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\Common.Interfaces.AssemblyInfo.cs
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\Common.Interfaces.csproj.CoreCompileInputs.cache
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\refint\Common.Interfaces.dll
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\Common.Interfaces.pdb
+D:\учёба\курсы\Common.Interfaces\obj\Debug\net6.0\ref\Common.Interfaces.dll

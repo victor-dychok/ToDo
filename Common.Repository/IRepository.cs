@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common.Repository
 {
-    public interface IRepository<TEntity> where TEntity : class, new()
+    public interface IRepository<TEntity> where TEntity : IHasId
     {
         TEntity[] GetList(
             int? offset = null,

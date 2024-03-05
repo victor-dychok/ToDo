@@ -9,3 +9,7 @@ D:\учёба\курсы\ToDoDomain\obj\Debug\net6.0\ToDoDomain.dll
 D:\учёба\курсы\ToDoDomain\obj\Debug\net6.0\refint\ToDoDomain.dll
 D:\учёба\курсы\ToDoDomain\obj\Debug\net6.0\ToDoDomain.pdb
 D:\учёба\курсы\ToDoDomain\obj\Debug\net6.0\ref\ToDoDomain.dll
+D:\учёба\курсы\ToDoDomain\obj\Debug\net6.0\ToDoDomain.csproj.AssemblyReference.cache
+D:\учёба\курсы\ToDoDomain\bin\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\ToDoDomain\bin\Debug\net6.0\Common.Interfaces.pdb
+D:\учёба\курсы\ToDoDomain\obj\Debug\net6.0\ToDoDomain.csproj.CopyComplete

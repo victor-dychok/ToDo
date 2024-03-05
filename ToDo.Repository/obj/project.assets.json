@@ -5,6 +5,9 @@
       "Common.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Common.Domain.dll": {}
         },
@@ -12,11 +15,22 @@
           "bin/placeholder/Common.Domain.dll": {}
         }
       },
+      "Common.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Common.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.Interfaces.dll": {}
+        }
+      },
       "Common.Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Common.Domain": "1.0.0"
+          "Common.Domain": "1.0.0",
+          "Common.Interfaces": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Common.Repository.dll": {}
@@ -28,6 +42,9 @@
       "ToDoDomain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/ToDoDomain.dll": {}
         },
@@ -42,6 +59,11 @@
       "type": "project",
       "path": "../Common.Domain/Common.Domain.csproj",
       "msbuildProject": "../Common.Domain/Common.Domain.csproj"
+    },
+    "Common.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Common.Interfaces/Common.Interfaces.csproj",
+      "msbuildProject": "../Common.Interfaces/Common.Interfaces.csproj"
     },
     "Common.Repository/1.0.0": {
       "type": "project",

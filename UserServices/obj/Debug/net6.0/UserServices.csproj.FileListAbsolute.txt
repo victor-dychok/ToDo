@@ -15,3 +15,5 @@ D:\учёба\курсы\UserServices\obj\Debug\net6.0\UserServices.pdb
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\ref\UserServices.dll
 D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Repository.dll
 D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Repository.pdb
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Interfaces.pdb

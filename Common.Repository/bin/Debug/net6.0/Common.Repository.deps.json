@@ -8,15 +8,24 @@
     ".NETCoreApp,Version=v6.0": {
       "Common.Repository/1.0.0": {
         "dependencies": {
-          "Common.Domain": "1.0.0"
+          "Common.Domain": "1.0.0",
+          "Common.Interfaces": "1.0.0"
         },
         "runtime": {
           "Common.Repository.dll": {}
         }
       },
       "Common.Domain/1.0.0": {
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
         "runtime": {
           "Common.Domain.dll": {}
+        }
+      },
+      "Common.Interfaces/1.0.0": {
+        "runtime": {
+          "Common.Interfaces.dll": {}
         }
       }
     }
@@ -28,6 +37,11 @@
       "sha512": ""
     },
     "Common.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common.Interfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

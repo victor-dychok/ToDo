@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common.Repository
 {
-    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : IHasId
     {
         private readonly List<TEntity> _data = new List<TEntity>();
 
@@ -54,7 +55,8 @@ namespace Common.Repository
 
         public TEntity? Update(TEntity item)
         {
-            _data.Remove(item);
+            var entity = _data.FirstOrDefault(x => x.Id == item.Id);
+            _data.Remove(entity);
             _data.Add(item);
             return item;
         }

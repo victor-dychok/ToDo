@@ -1,19 +1,28 @@
-﻿using Common.Domain;
+﻿using AutoMapper;
+using Common.Domain;
 using Common.Repository;
+using UserServices.dto;
 
 namespace UserServices
 {
     public class UserService : IUserService
     {
         private readonly IRepository<User> _userRepository;
-        public UserService(IRepository<User> users)
+        private readonly IMapper _mapper;
+        public UserService(IRepository<User> users, IMapper mapper)
         {
             _userRepository = users;
+            _mapper = mapper;
 
+            _userRepository.Add(new User { Id = 1, Name = "Vasia" });
+            _userRepository.Add(new User { Id = 2, Name = "Sasha" });
+            _userRepository.Add(new User { Id = 3, Name = "Petia" });
         }
 
-        public User? Add(User item)
+        public User? Add(UserDto itemDto)
         {
+            var item = new User();
+            item = _mapper.Map<UserDto, User>(itemDto);
             item.Id = _userRepository.GetList().Length == 0 ? 1 : _userRepository.GetList().Max(l => l.Id) + 1;
             return _userRepository.Add(item);
         }
@@ -42,14 +51,9 @@ namespace UserServices
                 u => u.Id);
         }
 
-        public User? Update(int id, User newItem)
+        public User? Update(User newItem)
         {
-            var user = GetById(id);
-            if (user is null)
-            {
-                return null;
-            }
-            return _userRepository.Update(user);
+            return _userRepository.Update(newItem);
         }
     }
 }

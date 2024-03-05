@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using UserServices.dto;
 
 namespace UserServices
 {
@@ -7,7 +8,7 @@ namespace UserServices
         public IEnumerable<User> GetList(int? offset, string? name, int? limit);
         public User? GetById(int id);
         public bool Delete(int id);
-        public User? Add(User item);
-        public User? Update(int id, User newItem);
+        public User? Add(UserDto item);
+        public User? Update(User newItem);
     }
 }

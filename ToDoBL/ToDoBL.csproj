@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Repository\Common.Repository.csproj" />
-    <ProjectReference Include="..\ToDo.Repository\ToDo.Repository.csproj" />
     <ProjectReference Include="..\ToDoDomain\ToDoDomain.csproj" />
     <ProjectReference Include="..\UserServices\UserServices.csproj" />
   </ItemGroup>

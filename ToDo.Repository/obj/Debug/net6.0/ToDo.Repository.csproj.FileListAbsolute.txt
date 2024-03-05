@@ -17,3 +17,5 @@ D:\учёба\курсы\ToDo.Repository\bin\Debug\net6.0\Common.Domain.dll
 D:\учёба\курсы\ToDo.Repository\bin\Debug\net6.0\Common.Repository.dll
 D:\учёба\курсы\ToDo.Repository\bin\Debug\net6.0\Common.Repository.pdb
 D:\учёба\курсы\ToDo.Repository\bin\Debug\net6.0\Common.Domain.pdb
+D:\учёба\курсы\ToDo.Repository\bin\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\ToDo.Repository\bin\Debug\net6.0\Common.Interfaces.pdb

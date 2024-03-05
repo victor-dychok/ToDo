@@ -1,6 +1,9 @@
-﻿namespace ToDoDomain
+﻿using Common.Interfaces;
+using System.Security.AccessControl;
+
+namespace ToDoDomain
 {
-    public class TodoItem
+    public class TodoItem : IHasId
     {
         public int Id { get; set; }
         public string? Label { get; set; } = default!;

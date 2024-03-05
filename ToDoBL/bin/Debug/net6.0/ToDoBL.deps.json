@@ -62,13 +62,22 @@
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "Common.Domain/1.0.0": {
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
         "runtime": {
           "Common.Domain.dll": {}
         }
       },
+      "Common.Interfaces/1.0.0": {
+        "runtime": {
+          "Common.Interfaces.dll": {}
+        }
+      },
       "Common.Repository/1.0.0": {
         "dependencies": {
-          "Common.Domain": "1.0.0"
+          "Common.Domain": "1.0.0",
+          "Common.Interfaces": "1.0.0"
         },
         "runtime": {
           "Common.Repository.dll": {}
@@ -84,6 +93,9 @@
         }
       },
       "ToDoDomain/1.0.0": {
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
         "runtime": {
           "ToDoDomain.dll": {}
         }
@@ -141,6 +153,11 @@
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
     "Common.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common.Interfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

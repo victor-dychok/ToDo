@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "lVoiWz0tch/pN8d9I8RdL8AFAv5+GswAZni60ux76KvdobTkJ4/3lDneZZxv6tjKt0GOtgzCFsVNjsMsqASrxg==",
+  "dgSpecHash": "tdcaGt2c/jU8G7njLHgM2kOiBq7QZM5O3gc9SaTHH6qvBvvmsN+lP6AmWmQDdOFQnDbyYJDj+y4IbDNLFJtpWw==",
   "success": true,
   "projectFilePath": "D:\\учёба\\курсы\\UserServices\\UserServices.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vitia\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
