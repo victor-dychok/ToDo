@@ -39,6 +39,7 @@ namespace Common.Repository
             {
                 result = result.Take(limit.Value);
             }
+            var res = result.ToList();
 
             return result.ToArray();
         }

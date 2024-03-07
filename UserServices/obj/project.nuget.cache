@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "tdcaGt2c/jU8G7njLHgM2kOiBq7QZM5O3gc9SaTHH6qvBvvmsN+lP6AmWmQDdOFQnDbyYJDj+y4IbDNLFJtpWw==",
+  "dgSpecHash": "tdlMvPaN/uWmyM/zf4WVZ/Y56Mu9lTOa3vONwDqYIotFxBn6qRM3+uLrD2LrtV50iwlmK2AIVRpXUhnurVMllg==",
   "success": true,
   "projectFilePath": "D:\\учёба\\курсы\\UserServices\\UserServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vitia\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",

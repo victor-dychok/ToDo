@@ -39,3 +39,7 @@ D:\учёба\курсы\UserAPI\bin\Debug\net6.0\Common.Interfaces.dll
 D:\учёба\курсы\UserAPI\bin\Debug\net6.0\Common.Interfaces.pdb
 D:\учёба\курсы\UserAPI\bin\Debug\net6.0\AutoMapper.dll
 D:\учёба\курсы\UserAPI\obj\Debug\net6.0\UserAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\учёба\курсы\UserAPI\bin\Debug\net6.0\FluentValidation.dll
+D:\учёба\курсы\UserAPI\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\учёба\курсы\UserAPI\bin\Debug\net6.0\SharpGrip.FluentValidation.AutoValidation.Mvc.dll
+D:\учёба\курсы\UserAPI\bin\Debug\net6.0\SharpGrip.FluentValidation.AutoValidation.Shared.dll

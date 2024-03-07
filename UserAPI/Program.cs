@@ -1,6 +1,15 @@
 using Common.Domain;
 using Common.Repository;
+using Serilog;
+using Serilog.Events;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using UserServices;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .WriteTo.File("Logs/Information-.txt", LogEventLevel.Information, rollingInterval: RollingInterval.Day)
+    .WriteTo.File("Logs/Log-error-.txt", LogEventLevel.Error, rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +20,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddUserServices();
+builder.Services.AddFluentValidationAutoValidation();
 
-var app = builder.Build();
+builder.Host.UseSerilog();
+WebApplication app = null;
+
+try
+{
+    app = builder.Build();
+}
+catch (Exception ex)
+{
+    Log.Error(ex.Message);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

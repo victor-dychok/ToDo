@@ -7,6 +7,9 @@ using AutoMapper;
 using Common.Domain;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using ToDoBL.Validators;
+using FluentValidation;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ToDoBL
 {
@@ -70,6 +73,9 @@ namespace ToDoBL
         {
             int ownerId = item.OwnerId;
             var user = _users.SingleOrDefault(u => u.Id == ownerId);
+
+
+
             if(user == null)
             {
                 return null;
