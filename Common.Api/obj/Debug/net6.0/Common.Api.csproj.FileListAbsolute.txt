@@ -1,0 +1,12 @@
+D:\учёба\курсы\Common.Api\bin\Debug\net6.0\Common.Api.deps.json
+D:\учёба\курсы\Common.Api\bin\Debug\net6.0\Common.Api.dll
+D:\учёба\курсы\Common.Api\bin\Debug\net6.0\Common.Api.pdb
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.csproj.AssemblyReference.cache
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.AssemblyInfoInputs.cache
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.AssemblyInfo.cs
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.csproj.CoreCompileInputs.cache
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.dll
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\refint\Common.Api.dll
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\Common.Api.pdb
+D:\учёба\курсы\Common.Api\obj\Debug\net6.0\ref\Common.Api.dll

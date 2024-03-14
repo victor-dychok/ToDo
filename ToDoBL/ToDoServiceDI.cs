@@ -1,7 +1,5 @@
 ﻿using Common.Domain;
 using Common.Repository;
-using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +11,8 @@ using ToDoBL.Mapper;
 using ToDoBL.Validators;
 using ToDoDomain;
 using UserServices;
+using Microsoft.Extensions.DependencyInjection;
+using FluentValidation;
 
 namespace ToDoBL
 {
@@ -21,10 +21,10 @@ namespace ToDoBL
         public static IServiceCollection AddToDoServices(this IServiceCollection services)
         {
 
-            services.AddSingleton<IToDoService, ToDoService>();
-            services.AddSingleton<IRepository<TodoItem>, BaseRepository<TodoItem>>();
-            services.AddSingleton<IRepository<User>, BaseRepository<User>>();
-            services.AddSingleton<IUserService, UserService>();
+            services.AddScoped<IToDoService, ToDoService>();
+            services.AddScoped<IRepository<TodoItem>, SqlServerBaseReository<TodoItem>>();
+            services.AddScoped<IRepository<User>, SqlServerBaseReository<User>>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly()}, includeInternalTypes: true);
 

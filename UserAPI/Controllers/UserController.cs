@@ -18,14 +18,14 @@ namespace UserAPI.Controllers
         [HttpGet]
         public IActionResult GetAll(int? offset, string? name, int? limit)
         {
-            return Ok(_users.GetList(offset, name, limit));
+            return Ok(_users.GetListAsync(offset, name, limit));
         }
 
         [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
 
-            var item = _users.GetById(id);
+            var item = _users.GetByIdOrDefaultAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -36,7 +36,7 @@ namespace UserAPI.Controllers
         [HttpPost]
         public IActionResult Post(UserDto item)
         {
-            var postedItem = _users.Add(item);
+            var postedItem = _users.AddAsync(item);
             if (postedItem != null)
             {
                 return Created("/todos", item);
@@ -45,9 +45,9 @@ namespace UserAPI.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(User newItem)
+        public IActionResult Put(UserDto newItem)
         {
-            var item = _users.Update(newItem);
+            var item = _users.UpdateAsync(newItem);
 
             if (item == null)
             {
@@ -62,8 +62,8 @@ namespace UserAPI.Controllers
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
-            var item = _users.GetById(id);
-            var flag = _users.Delete(id);
+            var item = _users.GetByIdOrDefaultAsync(id);
+            var flag = _users.DeleteAsync(id).Result;
             if (flag)
             {
                 return Ok(item);

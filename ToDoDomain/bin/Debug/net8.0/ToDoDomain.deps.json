@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ToDoDomain/1.0.0": {
+        "dependencies": {
+          "Common.Domain": "1.0.0",
+          "Common.Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "ToDoDomain.dll": {}
+        }
+      },
+      "Common.Domain/1.0.0": {
+        "dependencies": {
+          "Common.Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "Common.Domain.dll": {}
+        }
+      },
+      "Common.Interfaces/1.0.0": {
+        "runtime": {
+          "Common.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ToDoDomain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Common.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common.Repository
 {
-    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : IHasId
+    public class BaseRepository<TEntity>// : IRepository<TEntity> where TEntity : class, new()
     {
         private readonly List<TEntity> _data = new List<TEntity>();
 
@@ -56,8 +56,7 @@ namespace Common.Repository
 
         public TEntity? Update(TEntity item)
         {
-            var entity = _data.FirstOrDefault(x => x.Id == item.Id);
-            _data.Remove(entity);
+            _data.Remove(item);
             _data.Add(item);
             return item;
         }
@@ -69,6 +68,21 @@ namespace Common.Repository
                 return _data.SingleOrDefault();
             }
             return _data.SingleOrDefault(predicate.Compile());
+        }
+
+        public Task<TEntity?> SingleOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity?> AddAsync(TEntity item, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity[]> GetListAsync(int? offset = null, int? limit = null, Expression<Func<TEntity, bool>>? predicate = null, Expression<Func<TEntity, object>>? orderBy = null, bool? destinct = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

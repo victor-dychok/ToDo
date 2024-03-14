@@ -10,6 +10,8 @@ using System.Linq.Expressions;
 using ToDoBL.Validators;
 using FluentValidation;
 using System.Reflection.Metadata.Ecma335;
+using Common.Api;
+using Common.BL;
 
 namespace ToDoBL
 {
@@ -27,92 +29,89 @@ namespace ToDoBL
 
             _toDoRepository = repository;
 
-            if(_toDoRepository.GetList().Count() == 0)
-            {
-                _toDoRepository.Add(new TodoItem { Id = 1, Label = "Lable 1", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 1 });
-                _toDoRepository.Add(new TodoItem { Id = 2, Label = "Lable 1 test", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 2 });
-                _toDoRepository.Add(new TodoItem { Id = 3, Label = "Lable 2", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 3 });
-                _toDoRepository.Add(new TodoItem { Id = 4, Label = "Lable 3", IsDone = false, CreatedDate = DateTime.UtcNow, UpdatedDate = DateTime.UtcNow, OwnerId = 1 });
-            }
-
             _users = user;
-            if(_users.GetList().Count() == 0)
-            {
-                _users.Add(new User { Id = 1, Name = "Vasia" });
-                _users.Add(new User { Id = 2, Name = "Sasha" });
-                _users.Add(new User { Id = 3, Name = "Petia" });
-            }
+            
         }
-        public IEnumerable<TodoItem> GetList(int? offset, int? ownerId, string? lable, int? limit = 10)
+        public async Task<IEnumerable<TodoItem>> GetListAsync(int? offset, int? ownerId, string? lable, int? limit = 10, CancellationToken cancellationToken = default)
         {
-            // Expression<Func<TEntity, bool>>? predicate = null,
-            IEnumerable<TodoItem> result = _toDoRepository.GetList(
+            return await _toDoRepository.GetListAsync(
                 offset,
                 limit,
-                d => (string.IsNullOrWhiteSpace(lable) || d.Label.Contains(lable, StringComparison.InvariantCultureIgnoreCase)) 
+                d => (string.IsNullOrWhiteSpace(lable) || d.Label.Contains(lable, StringComparison.InvariantCultureIgnoreCase))
                 && (ownerId == null || d.OwnerId == ownerId.Value),
-                t => t.Id);
+                t => t.Id); ;
+        }
+
+        public async Task<TodoItem> GetByIdAsync(int id, CancellationToken cancellationToken)
+        {
+            var item = await _toDoRepository.SingleOrDefaultAsync(t => t.Id == id);
+            if(item == null)
+            {
+                throw new NotFoundExeption(new {Id = id});
+            }
+            return item;
+        }
+        public async Task<TodoItem> GetByIdIsDoneAsync(int id, CancellationToken cancellationToken)
+        {
+            var result = await _toDoRepository.SingleOrDefaultAsync(d => d.Id == id);
+            if(result == null)
+            {
+                throw new NotFoundExeption(new { Id = id});
+            }
             return result;
         }
 
-        public TodoItem? GetById(int id)
+        public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         {
-            return _toDoRepository.SingleOrDefault(t => t.Id == id);
-        }
-        public TodoItem? GetByIdIsDone(int id)
-        {
-            return _toDoRepository.GetList(null, null, t => t.IsDone == true, t => t.Id, false)[0];
+            var item = await GetByIdAsync(id, cancellationToken);
+            return await _toDoRepository.DeleteAsync(item);
         }
 
-        public bool Delete(int id)
-        {
-            return _toDoRepository.Delete(GetById(id));
-        }
-
-        public TodoItem? Add(CreateToDo item)
+        public async Task<TodoItem> AddAsync(CreateToDo item, CancellationToken cancellationToken)
         {
             int ownerId = item.OwnerId;
-            var user = _users.SingleOrDefault(u => u.Id == ownerId);
+            var user = _users.SingleOrDefaultAsync(u => u.Id == ownerId);
 
 
 
             if(user == null)
             {
-                return null;
+                throw new BadRequestExeption("Incorrect id");
             }
             
             var todoEntity = _mapper.Map<CreateToDo, TodoItem>(item);
             todoEntity.CreatedDate = DateTime.UtcNow;
             todoEntity.UpdatedDate = DateTime.UtcNow;
 
-            var list = _toDoRepository.GetList();
-            todoEntity.Id = _toDoRepository.GetList().Length == 0 ? 1 : _toDoRepository.GetList().Max(l => l.Id) + 1;
-
-            return _toDoRepository.Add(todoEntity);
+            return await _toDoRepository.AddAsync(todoEntity);
         }
 
-        public TodoItem? Update(UpdateToDo updateDto)
+        public async Task<TodoItem> UpdateAsync(UpdateToDo updateDto, CancellationToken cancellationToken)
         {
-            var todoEntity = GetById(updateDto.Id);
+            var todoEntity = GetByIdAsync(updateDto.Id, cancellationToken).Result;
             todoEntity = _mapper.Map<UpdateToDo, TodoItem>(updateDto);
-            if(todoEntity == null)
+            var user = await _users.SingleOrDefaultAsync();
+            if(user == null)
             {
-                return null;
+                throw new BadRequestExeption("Incorrect owner id");
             }
             _mapper.Map(updateDto, todoEntity);
             todoEntity.UpdatedDate = DateTime.UtcNow;
 
-            return _toDoRepository.Update(todoEntity);
+            return await _toDoRepository.UpdateAsync(todoEntity);
         }
 
-        public TodoItem? Putch(int id, bool isDone)
+        public async Task<TodoItem> PutchAsync(int id, bool isDone, CancellationToken cancellationToken)
         {
-            var TodoItem = GetById(id);
+            var TodoItem = GetByIdAsync(id, cancellationToken).Result;
             if(TodoItem == null)
-            {  return null; }
+            {
+                throw new NotFoundExeption("Todo item not found");
+            }
 
             TodoItem.IsDone = isDone;
-            return _toDoRepository.Update(TodoItem);
+            return await _toDoRepository.UpdateAsync(TodoItem);
         }
+
     }
 }

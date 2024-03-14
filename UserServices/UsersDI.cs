@@ -1,6 +1,8 @@
 ﻿using Common.Domain;
 using Common.Repository;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,8 +18,8 @@ namespace UserServices
     {
         public static IServiceCollection AddUserServices(this IServiceCollection services)
         {
-            services.AddSingleton<IRepository<User>, BaseRepository<User>>();
-            services.AddSingleton<IUserService, UserService>();
+            services.AddTransient<IRepository<User>, SqlServerBaseReository<User>>();
+            services.AddTransient<IUserService, UserService>(); 
             services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() }, includeInternalTypes: true);
             object value = services.AddAutoMapper(typeof(AutoMapperProfile));
 

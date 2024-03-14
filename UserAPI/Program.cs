@@ -12,27 +12,27 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddUserServices();
-builder.Services.AddFluentValidationAutoValidation();
-
-builder.Host.UseSerilog();
 WebApplication app = null;
 
 try
 {
-    app = builder.Build();
+    // Add services to the container.
+
+    builder.Services.AddControllers();
+    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+    builder.Services.AddUserServices();
+    builder.Services.AddTodoDatabase(builder.Configuration);
+    builder.Services.AddFluentValidationAutoValidation();
+
+    builder.Host.UseSerilog();
 }
 catch (Exception ex)
 {
     Log.Error(ex.Message);
 }
+app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

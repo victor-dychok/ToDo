@@ -1,0 +1,150 @@
+2024-03-14 16:11:32.584 +03:00 [ERR] Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Common.Repository.IRepository`1[Common.Domain.User] Lifetime: Singleton ImplementationType: Common.Repository.SqlServerBaseReository`1[Common.Domain.User]': Unable to resolve service for type 'Common.Repository.AppDBContext' while attempting to activate 'Common.Repository.SqlServerBaseReository`1[Common.Domain.User]'.) (Error while validating the service descriptor 'ServiceType: UserServices.IUserService Lifetime: Singleton ImplementationType: UserServices.UserService': Unable to resolve service for type 'Common.Repository.AppDBContext' while attempting to activate 'Common.Repository.SqlServerBaseReository`1[Common.Domain.User]'.)
+2024-03-14 16:14:09.077 +03:00 [ERR] Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Common.Repository.IRepository`1[Common.Domain.User] Lifetime: Singleton ImplementationType: Common.Repository.SqlServerBaseReository`1[Common.Domain.User]': Unable to resolve service for type 'Common.Repository.AppDBContext' while attempting to activate 'Common.Repository.SqlServerBaseReository`1[Common.Domain.User]'.) (Error while validating the service descriptor 'ServiceType: UserServices.IUserService Lifetime: Singleton ImplementationType: UserServices.UserService': Unable to resolve service for type 'Common.Repository.AppDBContext' while attempting to activate 'Common.Repository.SqlServerBaseReository`1[Common.Domain.User]'.)
+2024-03-14 16:14:23.461 +03:00 [ERR] Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Common.Repository.IRepository`1[Common.Domain.User] Lifetime: Transient ImplementationType: Common.Repository.SqlServerBaseReository`1[Common.Domain.User]': Unable to resolve service for type 'Common.Repository.AppDBContext' while attempting to activate 'Common.Repository.SqlServerBaseReository`1[Common.Domain.User]'.) (Error while validating the service descriptor 'ServiceType: UserServices.IUserService Lifetime: Transient ImplementationType: UserServices.UserService': Unable to resolve service for type 'Common.Repository.AppDBContext' while attempting to activate 'Common.Repository.SqlServerBaseReository`1[Common.Domain.User]'.)
+2024-03-14 16:18:19.451 +03:00 [INF] Now listening on: https://localhost:7128
+2024-03-14 16:18:19.474 +03:00 [INF] Now listening on: http://localhost:5096
+2024-03-14 16:18:19.522 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-14 16:18:19.523 +03:00 [INF] Hosting environment: Development
+2024-03-14 16:18:19.523 +03:00 [INF] Content root path: D:\учёба\курсы\UserAPI
+2024-03-14 16:18:23.086 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - null null
+2024-03-14 16:18:23.278 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - 200 null text/html;charset=utf-8 197.4678ms
+2024-03-14 16:18:23.318 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - null null
+2024-03-14 16:18:23.318 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-14 16:18:23.355 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 37.6051ms
+2024-03-14 16:18:23.408 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.8315ms
+2024-03-14 16:18:23.601 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - null null
+2024-03-14 16:18:23.759 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 157.8947ms
+2024-03-14 16:18:30.787 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/users - null null
+2024-03-14 16:18:30.803 +03:00 [INF] Executing endpoint 'UserAPI.Controllers.UserController.GetAll (UserAPI)'
+2024-03-14 16:18:30.818 +03:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.Nullable`1[System.Int32], System.String, System.Nullable`1[System.Int32]) on controller UserAPI.Controllers.UserController (UserAPI).
+2024-03-14 16:18:32.967 +03:00 [ERR] An error occurred using the connection to database '' on server ''.
+2024-03-14 16:18:32.997 +03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Common.Repository.AppDBContext'.
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+2024-03-14 16:18:33.149 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.IReadOnlyCollection`1[[Common.Domain.User, Common.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-14 16:18:33.163 +03:00 [INF] Executed action UserAPI.Controllers.UserController.GetAll (UserAPI) in 2342.3115ms
+2024-03-14 16:18:33.165 +03:00 [INF] Executed endpoint 'UserAPI.Controllers.UserController.GetAll (UserAPI)'
+2024-03-14 16:18:33.172 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (The ConnectionString property has not been initialized.)
+ ---> System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at Common.Repository.SqlServerBaseReository`1.GetListAsync(Nullable`1 offset, Nullable`1 limit, Expression`1 predicate, Expression`1 orderBy, Nullable`1 destinct, CancellationToken token) in D:\учёба\курсы\Common.Repository\SqlServerBaseReository.cs:line 59
+   at UserServices.UserService.GetListAsync(Nullable`1 offset, String name, Nullable`1 limit, CancellationToken token) in D:\учёба\курсы\UserServices\UserService.cs:line 45
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at ResultGetter(Object)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-03-14 16:18:33.241 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/users - 500 null text/plain; charset=utf-8 2454.3698ms
+2024-03-14 16:19:13.542 +03:00 [INF] Now listening on: https://localhost:7128
+2024-03-14 16:19:13.568 +03:00 [INF] Now listening on: http://localhost:5096
+2024-03-14 16:19:13.836 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-14 16:19:13.838 +03:00 [INF] Hosting environment: Development
+2024-03-14 16:19:13.839 +03:00 [INF] Content root path: D:\учёба\курсы\UserAPI
+2024-03-14 16:19:15.441 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - null null
+2024-03-14 16:19:15.618 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - 200 null text/html;charset=utf-8 180.3041ms
+2024-03-14 16:19:15.647 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-14 16:19:15.647 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - null null
+2024-03-14 16:19:15.653 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 5.9622ms
+2024-03-14 16:19:15.716 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - 200 null text/javascript; charset=UTF-8 69.0604ms
+2024-03-14 16:19:16.071 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - null null
+2024-03-14 16:19:16.352 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 280.9912ms
+2024-03-14 16:19:22.618 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/users - null null
+2024-03-14 16:19:22.626 +03:00 [INF] Executing endpoint 'UserAPI.Controllers.UserController.GetAll (UserAPI)'
+2024-03-14 16:19:22.654 +03:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.Nullable`1[System.Int32], System.String, System.Nullable`1[System.Int32]) on controller UserAPI.Controllers.UserController (UserAPI).
+2024-03-14 16:19:25.505 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Login], [u].[PasswordHash]
+FROM [Users] AS [u]
+2024-03-14 16:19:25.571 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.IReadOnlyCollection`1[[Common.Domain.User, Common.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-14 16:19:25.587 +03:00 [INF] Executed action UserAPI.Controllers.UserController.GetAll (UserAPI) in 2931.19ms
+2024-03-14 16:19:25.587 +03:00 [INF] Executed endpoint 'UserAPI.Controllers.UserController.GetAll (UserAPI)'
+2024-03-14 16:19:25.594 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/users - 200 null application/json; charset=utf-8 2976.9348ms
+2024-03-14 16:22:02.975 +03:00 [INF] Now listening on: https://localhost:7128
+2024-03-14 16:22:03.145 +03:00 [INF] Now listening on: http://localhost:5096
+2024-03-14 16:22:03.190 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-14 16:22:03.190 +03:00 [INF] Hosting environment: Development
+2024-03-14 16:22:03.190 +03:00 [INF] Content root path: D:\учёба\курсы\UserAPI
+2024-03-14 16:22:05.040 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - null null
+2024-03-14 16:22:05.262 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - 200 null text/html;charset=utf-8 229.3957ms
+2024-03-14 16:22:05.330 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - null null
+2024-03-14 16:22:05.330 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-14 16:22:05.352 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 22.8493ms
+2024-03-14 16:22:05.558 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - 200 null text/javascript; charset=UTF-8 228.6684ms
+2024-03-14 16:22:05.715 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - null null
+2024-03-14 16:22:05.800 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 85.2832ms
+2024-03-14 16:22:11.799 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7128/users - null null
+2024-03-14 16:22:11.805 +03:00 [INF] Executing endpoint 'UserAPI.Controllers.UserController.GetAll (UserAPI)'
+2024-03-14 16:22:11.842 +03:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.Nullable`1[System.Int32], System.String, System.Nullable`1[System.Int32]) on controller UserAPI.Controllers.UserController (UserAPI).
+2024-03-14 16:22:13.474 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Login], [u].[PasswordHash]
+FROM [Users] AS [u]
+2024-03-14 16:22:13.541 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.IReadOnlyCollection`1[[Common.Domain.User, Common.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-14 16:22:13.557 +03:00 [INF] Executed action UserAPI.Controllers.UserController.GetAll (UserAPI) in 1712.4667ms
+2024-03-14 16:22:13.557 +03:00 [INF] Executed endpoint 'UserAPI.Controllers.UserController.GetAll (UserAPI)'
+2024-03-14 16:22:13.573 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7128/users - 200 null application/json; charset=utf-8 1774.5558ms

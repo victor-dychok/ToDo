@@ -5,12 +5,12 @@ namespace ToDoBL
 {
     public interface IToDoService
     {
-        public IEnumerable<TodoItem> GetList(int? offset, int? limit, string? lable, int? ownerId);
-        public TodoItem? GetById(int id);
-        public TodoItem? GetByIdIsDone(int id);
-        public bool Delete(int id);
-        public TodoItem? Add(CreateToDo item);
-        public TodoItem? Update(UpdateToDo newItem);
-        public TodoItem? Putch(int id, bool isDone);
+        public Task<IEnumerable<TodoItem>> GetListAsync(int? offset, int? limit, string? lable, int? ownerId, CancellationToken cancellationToken = default);
+        public Task<TodoItem> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+        public Task<TodoItem> GetByIdIsDoneAsync(int id, CancellationToken cancellationToken = default);
+        public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default);
+        public Task<TodoItem> AddAsync(CreateToDo item, CancellationToken cancellationToken = default);
+        public Task<TodoItem> UpdateAsync(UpdateToDo newItem, CancellationToken cancellationToken = default);
+        public Task<TodoItem> PutchAsync(int id, bool isDone, CancellationToken cancellationToken = default);
     }
 }

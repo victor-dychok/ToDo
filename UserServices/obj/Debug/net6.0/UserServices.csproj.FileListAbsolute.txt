@@ -2,7 +2,13 @@ D:\учёба\курсы\UserServices\bin\Debug\net6.0\UserServices.deps.json
 D:\учёба\курсы\UserServices\bin\Debug\net6.0\UserServices.dll
 D:\учёба\курсы\UserServices\bin\Debug\net6.0\UserServices.pdb
 D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Domain.dll
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Repository.dll
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\ToDoDomain.dll
 D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Domain.pdb
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Repository.pdb
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Interfaces.pdb
+D:\учёба\курсы\UserServices\bin\Debug\net6.0\ToDoDomain.pdb
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\UserServices.csproj.AssemblyReference.cache
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\UserServices.GeneratedMSBuildEditorConfig.editorconfig
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\UserServices.AssemblyInfoInputs.cache
@@ -13,7 +19,3 @@ D:\учёба\курсы\UserServices\obj\Debug\net6.0\UserServices.dll
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\refint\UserServices.dll
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\UserServices.pdb
 D:\учёба\курсы\UserServices\obj\Debug\net6.0\ref\UserServices.dll
-D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Repository.dll
-D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Repository.pdb
-D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Interfaces.dll
-D:\учёба\курсы\UserServices\bin\Debug\net6.0\Common.Interfaces.pdb

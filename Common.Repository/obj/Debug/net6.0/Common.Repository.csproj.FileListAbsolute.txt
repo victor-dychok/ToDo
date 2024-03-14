@@ -1,8 +1,13 @@
 D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Repository.deps.json
+D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Repository.runtimeconfig.json
 D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Repository.dll
 D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Repository.pdb
 D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Domain.dll
+D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Interfaces.dll
+D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\ToDoDomain.dll
 D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Domain.pdb
+D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Interfaces.pdb
+D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\ToDoDomain.pdb
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.csproj.AssemblyReference.cache
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.GeneratedMSBuildEditorConfig.editorconfig
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.AssemblyInfoInputs.cache
@@ -12,6 +17,5 @@ D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.cs
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.dll
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\refint\Common.Repository.dll
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.pdb
+D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\Common.Repository.genruntimeconfig.cache
 D:\учёба\курсы\Common.Repository\obj\Debug\net6.0\ref\Common.Repository.dll
-D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Interfaces.dll
-D:\учёба\курсы\Common.Repository\bin\Debug\net6.0\Common.Interfaces.pdb

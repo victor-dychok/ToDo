@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Common.Repository
 {
-    public interface IRepository<TEntity> where TEntity : IHasId
+    public interface IRepository<TEntity> where TEntity : class, new()
     {
-        TEntity[] GetList(
+        Task<TEntity[]> GetListAsync(
             int? offset = null,
-            int? limit = null, 
-            Expression<Func<TEntity, bool>>? predicate = null, 
+            int? limit = null,
+            Expression<Func<TEntity, bool>>? predicate = null,
             Expression<Func<TEntity, object>>? orderBy = null,
-            bool? destinct = null);
-        TEntity? SingleOrDefault(Expression<Func<TEntity, bool>>? predicate = null);
-        TEntity? Add(TEntity item);
-        TEntity? Update(TEntity item);
-        bool Delete(TEntity item);
+            bool? destinct = null,
+            CancellationToken token = default);
+        Task<TEntity?> SingleOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
+        Task<TEntity?> AddAsync(TEntity item, CancellationToken cancellationToken = default);
+        Task<TEntity?> UpdateAsync(TEntity item, CancellationToken cancellationToken = default);
+        Task<bool> DeleteAsync(TEntity item, CancellationToken token = default);
     }
 }

@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using Common.Api;
+using Common.BL;
 using Common.Domain;
 using Common.Repository;
+using ToDoDomain;
 using UserServices.dto;
 
 namespace UserServices
@@ -13,47 +16,43 @@ namespace UserServices
         {
             _userRepository = users;
             _mapper = mapper;
-
-            _userRepository.Add(new User { Id = 1, Name = "Vasia" });
-            _userRepository.Add(new User { Id = 2, Name = "Sasha" });
-            _userRepository.Add(new User { Id = 3, Name = "Petia" });
         }
 
-        public User? Add(UserDto itemDto)
+        public async Task<User?> AddAsync(UserDto item, CancellationToken token = default)
         {
-            var item = new User();
-            item = _mapper.Map<UserDto, User>(itemDto);
-            item.Id = _userRepository.GetList().Length == 0 ? 1 : _userRepository.GetList().Max(l => l.Id) + 1;
-            return _userRepository.Add(item);
+
+            var user = _mapper.Map<UserDto, User>(item);
+            return await _userRepository.AddAsync(user, token);
         }
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
         {
-            var user = GetById(id);
-            if (user is null)
+            var item = await GetByIdOrDefaultAsync(id);
+            if(item == null)
             {
-                return false;
+                throw new NotFoundExeption(new {Id = id});
             }
-            return _userRepository.Delete(user);
+            return await _userRepository.DeleteAsync(item, token);
         }
 
-        public User? GetById(int id)
+        public async Task<User?> GetByIdOrDefaultAsync(int id, CancellationToken token = default)
         {
-            return _userRepository.SingleOrDefault(b => b.Id == id);
+            return await _userRepository.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public IEnumerable<User> GetList(int? offset, string? name, int? limit)
+        public async Task<IReadOnlyCollection<User>> GetListAsync(int? offset, string? name, int? limit, CancellationToken token = default)
         {
-            return _userRepository.GetList(
+            return await _userRepository.GetListAsync(
                 offset,
                 limit,
-                name == null ? null : u => u.Name.Contains(name),
-                u => u.Id);
+                name == null ? null : u => u.Login.Contains(name),
+                token: token);
         }
 
-        public User? Update(User newItem)
+        public async Task<User?> UpdateAsync(UserDto newItem, CancellationToken token = default)
         {
-            return _userRepository.Update(newItem);
+            var user = _mapper.Map<UserDto, User>(newItem);
+            return await _userRepository.UpdateAsync(user, token);
         }
     }
 }

@@ -1,0 +1,15 @@
+D:\учёба\курсы\Common.Domain\bin\Debug\net8.0\Common.Domain.deps.json
+D:\учёба\курсы\Common.Domain\bin\Debug\net8.0\Common.Domain.dll
+D:\учёба\курсы\Common.Domain\bin\Debug\net8.0\Common.Domain.pdb
+D:\учёба\курсы\Common.Domain\bin\Debug\net8.0\Common.Interfaces.dll
+D:\учёба\курсы\Common.Domain\bin\Debug\net8.0\Common.Interfaces.pdb
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.csproj.AssemblyReference.cache
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.AssemblyInfoInputs.cache
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.AssemblyInfo.cs
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.csproj.CoreCompileInputs.cache
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.D.8CBE4322.Up2Date
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.dll
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\refint\Common.Domain.dll
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\Common.Domain.pdb
+D:\учёба\курсы\Common.Domain\obj\Debug\net8.0\ref\Common.Domain.dll
