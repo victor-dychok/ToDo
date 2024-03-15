@@ -61,8 +61,7 @@ namespace Common.Repository
 
         public async Task<TEntity?> UpdateAsync(TEntity item, CancellationToken cancellationToken = default)
         {
-            var set = _applicationDbContext.Set<TEntity>();
-            set.Update(item);
+            _applicationDbContext.Update(item);
             await _applicationDbContext.SaveChangesAsync();
             return item;
         }

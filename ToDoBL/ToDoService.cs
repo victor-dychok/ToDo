@@ -70,9 +70,7 @@ namespace ToDoBL
         public async Task<TodoItem> AddAsync(CreateToDo item, CancellationToken cancellationToken)
         {
             int ownerId = item.OwnerId;
-            var user = _users.SingleOrDefaultAsync(u => u.Id == ownerId);
-
-
+            var user = _users.SingleOrDefaultAsync(u => u.Id == ownerId).Result;
 
             if(user == null)
             {
@@ -82,23 +80,39 @@ namespace ToDoBL
             var todoEntity = _mapper.Map<CreateToDo, TodoItem>(item);
             todoEntity.CreatedDate = DateTime.UtcNow;
             todoEntity.UpdatedDate = DateTime.UtcNow;
+            todoEntity.User = user;
 
-            return await _toDoRepository.AddAsync(todoEntity);
+            var addedItem = await _toDoRepository.AddAsync(todoEntity);
+
+            if (addedItem is null)
+            {
+                throw new BadRequestExeption("Can not creade ToDo item");
+            }
+
+            return addedItem;
         }
 
         public async Task<TodoItem> UpdateAsync(UpdateToDo updateDto, CancellationToken cancellationToken)
         {
-            var todoEntity = GetByIdAsync(updateDto.Id, cancellationToken).Result;
+            var todoEntity = new TodoItem();
             todoEntity = _mapper.Map<UpdateToDo, TodoItem>(updateDto);
-            var user = await _users.SingleOrDefaultAsync();
+            var user = await _users.SingleOrDefaultAsync(i => i.Id == todoEntity.OwnerId);
             if(user == null)
             {
                 throw new BadRequestExeption("Incorrect owner id");
             }
             _mapper.Map(updateDto, todoEntity);
             todoEntity.UpdatedDate = DateTime.UtcNow;
+            todoEntity.User = user;
 
-            return await _toDoRepository.UpdateAsync(todoEntity);
+            var updatedItem = await _toDoRepository.UpdateAsync(todoEntity, cancellationToken);
+
+            if(updatedItem is null)
+            {
+                throw new Exception("Can not update ToDo item");
+            }
+
+            return updatedItem;
         }
 
         public async Task<TodoItem> PutchAsync(int id, bool isDone, CancellationToken cancellationToken)
@@ -110,7 +124,15 @@ namespace ToDoBL
             }
 
             TodoItem.IsDone = isDone;
-            return await _toDoRepository.UpdateAsync(TodoItem);
+
+            var putchedItem = await _toDoRepository.UpdateAsync(TodoItem);
+
+            if(putchedItem is null)
+            {
+                throw new BadRequestExeption("Can not create item");
+            }
+
+            return putchedItem;
         }
 
     }

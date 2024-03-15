@@ -6,6 +6,7 @@ using Common.Repository;
 using ToDoDomain;
 using UserServices.dto;
 
+
 namespace UserServices
 {
     public class UserService : IUserService
@@ -18,11 +19,16 @@ namespace UserServices
             _mapper = mapper;
         }
 
-        public async Task<User?> AddAsync(UserDto item, CancellationToken token = default)
+        public async Task<User> AddAsync(UserDto item, CancellationToken token = default)
         {
-
             var user = _mapper.Map<UserDto, User>(item);
-            return await _userRepository.AddAsync(user, token);
+            user.PasswordHash = "qwe323r43t";
+            var addedItem = await _userRepository.AddAsync(user, token);
+            if(addedItem is null)
+            {
+                throw new BadRequestExeption("Can not add user");
+            }
+            return addedItem;
         }
 
         public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
@@ -35,9 +41,14 @@ namespace UserServices
             return await _userRepository.DeleteAsync(item, token);
         }
 
-        public async Task<User?> GetByIdOrDefaultAsync(int id, CancellationToken token = default)
+        public async Task<User> GetByIdOrDefaultAsync(int id, CancellationToken token = default)
         {
-            return await _userRepository.SingleOrDefaultAsync(x => x.Id == id);
+            var item = await _userRepository.SingleOrDefaultAsync(x => x.Id == id);
+            if (item is null)
+            {
+                throw new NotFoundExeption(new { Id = id });
+            }
+            return item;
         }
 
         public async Task<IReadOnlyCollection<User>> GetListAsync(int? offset, string? name, int? limit, CancellationToken token = default)
@@ -49,10 +60,16 @@ namespace UserServices
                 token: token);
         }
 
-        public async Task<User?> UpdateAsync(UserDto newItem, CancellationToken token = default)
+        public async Task<User> UpdateAsync(UserDto newItem, CancellationToken token = default)
         {
             var user = _mapper.Map<UserDto, User>(newItem);
-            return await _userRepository.UpdateAsync(user, token);
+            user.PasswordHash = "qwe323r43t";
+            var item = await _userRepository.UpdateAsync(user, token);
+            if(item is null)
+            {
+                throw new BadRequestExeption("Can not update user");
+            }
+            return item;
         }
     }
 }

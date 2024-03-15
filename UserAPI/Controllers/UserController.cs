@@ -16,62 +16,36 @@ namespace UserAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(int? offset, string? name, int? limit)
+        public async Task<IActionResult> GetAll(int? offset, string? name, int? limit)
         {
-            return Ok(_users.GetListAsync(offset, name, limit));
+            return Ok(await _users.GetListAsync(offset, name, limit));
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-
-            var item = _users.GetByIdOrDefaultAsync(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            else return Ok(item);
+            var item = await _users.GetByIdOrDefaultAsync(id);
+            return Ok(item);
         }
 
         [HttpPost]
-        public IActionResult Post(UserDto item)
+        public async Task<IActionResult> Post(UserDto item)
         {
-            var postedItem = _users.AddAsync(item);
-            if (postedItem != null)
-            {
-                return Created("/todos", item);
-            }
-            else return BadRequest();
+            var postedItem = await _users.AddAsync(item);
+            return Created("/todos", item);
         }
 
         [HttpPut]
-        public IActionResult Put(UserDto newItem)
+        public async Task<IActionResult> Put(UserDto newItem)
         {
-            var item = _users.UpdateAsync(newItem);
-
-            if (item == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(item);
-            }
+            var item = await _users.UpdateAsync(newItem);
+            return Ok(item);
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var item = _users.GetByIdOrDefaultAsync(id);
-            var flag = _users.DeleteAsync(id).Result;
-            if (flag)
-            {
-                return Ok(item);
-            }
-            else
-            {
-                return NotFound();
-            }
+            return Ok(await _users.DeleteAsync(id));
         }
     }
 }
