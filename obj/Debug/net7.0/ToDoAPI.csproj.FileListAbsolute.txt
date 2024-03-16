@@ -1,0 +1,6 @@
+D:\учёба\курсы\ToDo\obj\Debug\net7.0\ToDoAPI.csproj.AssemblyReference.cache
+D:\учёба\курсы\ToDo\obj\Debug\net7.0\ToDoAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\учёба\курсы\ToDo\obj\Debug\net7.0\ToDoAPI.AssemblyInfoInputs.cache
+D:\учёба\курсы\ToDo\obj\Debug\net7.0\ToDoAPI.AssemblyInfo.cs
+D:\учёба\курсы\ToDo\obj\Debug\net7.0\ToDoAPI.csproj.CoreCompileInputs.cache
+D:\учёба\курсы\ToDo\obj\Debug\net7.0\ToDoAPI.MvcApplicationPartsAssemblyInfo.cache

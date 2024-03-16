@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ToDo.Models;
 using ToDo.Respounces;
+using ToDoBL;
+using ToDoBL.dto;
+using ToDoDomain;
 
 namespace ToDo.Controllers
 {
@@ -9,35 +11,27 @@ namespace ToDo.Controllers
     [Route("todos")]
     public class ToDoController : ControllerBase
     {
-        private static readonly List<TodoItem> _todoItems = new List<TodoItem> {
-            new TodoItem(1, "Lable 1", true, DateTime.UtcNow, DateTime.UtcNow),
-            new TodoItem(2, "Lable 2", false, DateTime.UtcNow, DateTime.UtcNow),
-            new TodoItem(3, "Lable 3", true, DateTime.UtcNow, DateTime.UtcNow),
-            new TodoItem(4, "Lable 4", false, DateTime.UtcNow, DateTime.UtcNow),
-            new TodoItem(5, "Lable 5", false, DateTime.UtcNow, DateTime.UtcNow)
-        };
+        private readonly IToDoService _toDoService;
+        public ToDoController(IToDoService service) 
+        {
+            _toDoService = service;
+        }
+        
 
         [HttpGet]
-        [Route("/todos")]
-        public IActionResult GetAll(int limit, int offset)
+        public async Task<IActionResult> GetAll(int? offset, int? ownerId, string? lable, int? limit)
         {
-            if(Validation.IsOkIntIdValue(limit)&&Validation.IsOkIntIdValue(offset))
-            {
-                return Ok( //-1
-                _todoItems
-                .OrderBy(b => b.Id)
-                .Skip(offset)
-                .Take(limit)
-                .ToList());
-            }
-            else return BadRequest("Incorrect limit or offset value");
+            var todos = await _toDoService.GetListAsync(offset, ownerId, lable, limit);
+            HttpContext.Response.Headers.Append("X-Total-Count", todos.Count().ToString());
+            return Ok(todos);
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetById(int id) 
+        public async Task<IActionResult> GetById(int id) 
         {
-            var item = _todoItems.FirstOrDefault(x=>x.Id==id);
-            if(item==null)
+
+            var item = await _toDoService.GetByIdAsync(id);
+            if (item == null)
             {
                 return NotFound();
             }
@@ -45,108 +39,61 @@ namespace ToDo.Controllers
         }
 
         [HttpGet("{id:int}/IsDone")]
-        public IActionResult GetByIdIsDone(int id)
+        public IActionResult GetByIdIsDone(int id, CancellationToken cancellationToken)
         {
-            var respItem = _todoItems.FirstOrDefault(x => x.Id == id && x.IsDone == true);
-            if (respItem == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                var respounce = new ToDoIdFlagResp(respItem.Id, respItem.IsDone);
-                return Ok(respounce);
-            }
+            var respItem = _toDoService.GetByIdIsDoneAsync(id, cancellationToken);
+            var respounce = new ToDoIdFlagResp(respItem.Id, respItem.Result.IsDone);
+            return Ok(respounce);
         }
 
-        [HttpGet("/Undone")]
-        public IActionResult GetAllUndone()
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateToDo item)
         {
-            var respData = _todoItems.Where(x => x.IsDone == false);
-            if (respData == null)
+            var postedItem = await _toDoService.AddAsync(item);
+            if(postedItem != null)
             {
-                return NotFound();
-            }
-            else
-            {
-                var respounceList = new List<ToDoIdFlagResp>();
-                foreach (var item in respData)
-                {
-                    respounceList.Add(new ToDoIdFlagResp(item.Id, item.IsDone));
-                }
-                return Ok(respounceList);
-            }
-        }
-
-        [HttpPost("/todos/add")]
-        
-        public IActionResult Post(TodoItem item)
-        {
-            if(item != null)
-            {
-                int idToSet = item.Id;
-                var sameId = _todoItems.SingleOrDefault(x => x.Id == item.Id); //First??
-
-                if (sameId == null)
-                {
-                    item.CreatedDate = DateTime.UtcNow;
-                    item.UpdatedDate = DateTime.UtcNow;
-                    _todoItems.Add(item);
-                    return Created("/todos/add", item);
-                }
-                else return BadRequest();
+                return Created("/todos", item);
             }
             else return BadRequest();
 
 
         }
 
-        [HttpPut("{id:int}")]
-        public IActionResult Put(int id, TodoItem newItem)
+        [HttpPut]
+        public async Task<IActionResult> Put(UpdateToDo newItem)
         {
-            var item = _todoItems.SingleOrDefault(x => x.Id == id);
+            var item = await _toDoService.UpdateAsync(newItem);
+
             if (item == null)
             {
                 return NotFound();
             }
             else
             {
-                item.Label = newItem.Label;
-                item.UpdatedDate = DateTime.UtcNow;
-                item.IsDone = newItem.IsDone;
                 return Ok(item);
             }
         }
 
         [HttpPatch("{id:int}/IsDone")]
-        public IActionResult Putch(int id)
+        public async Task<IActionResult> Putch(int id, bool isDone)
         {
-            var item = _todoItems.SingleOrDefault(x => x.Id == id);
+            var item = await _toDoService.PutchAsync(id, isDone);
             if (item == null)
             {
                 return NotFound();
             }
             else
             {
-                item.IsDone = true;
-                ToDoIdFlagResp respounce = new ToDoIdFlagResp(item.Id, item.IsDone); //item.Id, true??
+                var respounce = new ToDoIdFlagResp(item.Id, item.IsDone);
                 return Ok(respounce);
             }
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var item = _todoItems.SingleOrDefault(x => x.Id == id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                _todoItems.Remove(item);
-                return Ok(item);
-            }
+            var item = await _toDoService.DeleteAsync(id);
+            return Ok(item);
         }
     }
 }

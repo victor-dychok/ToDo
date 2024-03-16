@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ToDo.Models;
+using ToDoDomain;
 
 namespace ToDo
 {
