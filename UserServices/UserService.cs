@@ -3,8 +3,10 @@ using Common.Api;
 using Common.BL;
 using Common.Domain;
 using Common.Repository;
+using System.Collections.Generic;
 using ToDoDomain;
 using UserServices.dto;
+using UserServices.Utils;
 
 
 namespace UserServices
@@ -19,16 +21,24 @@ namespace UserServices
             _mapper = mapper;
         }
 
-        public async Task<User> AddAsync(UserDto item, CancellationToken token = default)
+        public async Task<UserGetDto> AddAsync(UserDto item, CancellationToken token = default)
         {
-            var user = _mapper.Map<UserDto, User>(item);
-            user.PasswordHash = "qwe323r43t";
-            var addedItem = await _userRepository.AddAsync(user, token);
+            if(await _userRepository.SingleOrDefaultAsync(u => u.Login == item.Login.Trim()) is not null)
+            {
+                throw new BadRequestExeption("This login is alreadi taken");
+            }
+            var entity = new User()
+            {
+                Login = item.Login,
+                PasswordHash = PasswordHashUtil.Hash(item.Password),
+            };
+            
+            var addedItem = await _userRepository.AddAsync(entity, token);
             if(addedItem is null)
             {
                 throw new BadRequestExeption("Can not add user");
             }
-            return addedItem;
+            return _mapper.Map<UserGetDto>(addedItem);
         }
 
         public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
@@ -38,29 +48,29 @@ namespace UserServices
             {
                 throw new NotFoundExeption(new {Id = id});
             }
-            return await _userRepository.DeleteAsync(item, token);
+            return await _userRepository.DeleteAsync(_mapper.Map<User>(item), token);
         }
 
-        public async Task<User> GetByIdOrDefaultAsync(int id, CancellationToken token = default)
+        public async Task<UserGetDto> GetByIdOrDefaultAsync(int id, CancellationToken token = default)
         {
             var item = await _userRepository.SingleOrDefaultAsync(x => x.Id == id);
             if (item is null)
             {
                 throw new NotFoundExeption(new { Id = id });
             }
-            return item;
+            return _mapper.Map<UserGetDto>(item);
         }
 
-        public async Task<IReadOnlyCollection<User>> GetListAsync(int? offset, string? name, int? limit, CancellationToken token = default)
+        public async Task<IReadOnlyCollection<UserGetDto>> GetListAsync(int? offset, string? name, int? limit, CancellationToken token = default)
         {
-            return await _userRepository.GetListAsync(
+            return _mapper.Map<IReadOnlyCollection<UserGetDto>>(await _userRepository.GetListAsync(
                 offset,
                 limit,
                 name == null ? null : u => u.Login.Contains(name),
-                token: token);
+                token: token));
         }
 
-        public async Task<User> UpdateAsync(UserDto newItem, CancellationToken token = default)
+        public async Task<UserGetDto> UpdateAsync(UserDto newItem, CancellationToken token = default)
         {
             var user = _mapper.Map<UserDto, User>(newItem);
             user.PasswordHash = "qwe323r43t";
@@ -69,7 +79,8 @@ namespace UserServices
             {
                 throw new BadRequestExeption("Can not update user");
             }
-            return item;
+            return _mapper.Map<UserGetDto>(item);
         }
+
     }
 }

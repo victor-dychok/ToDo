@@ -70,7 +70,7 @@ namespace ToDoBL
         public async Task<TodoItem> AddAsync(CreateToDo item, CancellationToken cancellationToken)
         {
             int ownerId = item.OwnerId;
-            var user = _users.SingleOrDefaultAsync(u => u.Id == ownerId).Result;
+            var user = await _users.SingleOrDefaultAsync(u => u.Id == ownerId);
 
             if(user == null)
             {
@@ -117,7 +117,7 @@ namespace ToDoBL
 
         public async Task<TodoItem> PutchAsync(int id, bool isDone, CancellationToken cancellationToken)
         {
-            var TodoItem = GetByIdAsync(id, cancellationToken).Result;
+            var TodoItem = await GetByIdAsync(id, cancellationToken);
             if(TodoItem == null)
             {
                 throw new NotFoundExeption("Todo item not found");

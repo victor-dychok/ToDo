@@ -1,4 +1,5 @@
 ﻿using Common.BL;
+using Common.BL.Exeptions;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,10 @@ namespace Common.Api
                     case BadRequestExeption badRequestException:
                         statusCode = HttpStatusCode.BadRequest;
                         result = JsonSerializer.Serialize(badRequestException.Message);
+                        break;
+                    case ForbidenExeption forbidenExeption:
+                        statusCode = HttpStatusCode.Forbidden;
+                        result = JsonSerializer.Serialize(forbidenExeption.Message);
                         break;
                 }
 

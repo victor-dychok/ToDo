@@ -32,7 +32,7 @@ namespace UserAPI.Controllers
         public async Task<IActionResult> Post(UserDto item)
         {
             var postedItem = await _users.AddAsync(item);
-            return Created("/todos", item);
+            return Created($"/users/{postedItem.Id}", postedItem);
         }
 
         [HttpPut]

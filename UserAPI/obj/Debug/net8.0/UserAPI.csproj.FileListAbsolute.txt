@@ -97,3 +97,5 @@ D:\учёба\курсы\UserAPI\bin\Debug\net8.0\Common.Api.dll
 D:\учёба\курсы\UserAPI\bin\Debug\net8.0\Common.BL.dll
 D:\учёба\курсы\UserAPI\bin\Debug\net8.0\Common.Api.pdb
 D:\учёба\курсы\UserAPI\bin\Debug\net8.0\Common.BL.pdb
+D:\учёба\курсы\UserAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\учёба\курсы\UserAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll

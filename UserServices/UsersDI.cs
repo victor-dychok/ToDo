@@ -20,6 +20,7 @@ namespace UserServices
         {
             services.AddTransient<IRepository<User>, SqlServerBaseReository<User>>();
             services.AddTransient<IUserService, UserService>(); 
+            services.AddTransient<IAutnService, AuthService>();
             services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() }, includeInternalTypes: true);
             object value = services.AddAutoMapper(typeof(AutoMapperProfile));
 

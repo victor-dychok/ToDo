@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "hNpGCK43BgKsh8et7iB4r5XXrc7olzrFJ8z/bnCtggJGJFr1E6favuZ5WropyNBDO+xVUFDG+kUgqv8m1HtKxQ==",
+  "dgSpecHash": "UqJrSiqwf3Uk2PMvfO/7Vo6uGJFyEHxGj6BpJen5KpQSWKTOktvZ5UOJf2zXx0y6d7FDQ/fuKyOKaC2poGBhsw==",
   "success": true,
   "projectFilePath": "D:\\учёба\\курсы\\ToDoBL\\ToDoBL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vitia\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\vitia\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\vitia\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

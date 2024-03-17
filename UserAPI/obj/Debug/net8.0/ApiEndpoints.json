@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "UserAPI.Controllers.AuthController",
+    "Method": "Post",
+    "RelativePath": "Auth/CreateJwtToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "authDto",
+        "Type": "UserServices.dto.AuthDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserAPI.Controllers.AuthController",
+    "Method": "GetMyInfo",
+    "RelativePath": "Auth/GetMyInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UserAPI.Controllers.UserController",
     "Method": "GetAll",
     "RelativePath": "users",

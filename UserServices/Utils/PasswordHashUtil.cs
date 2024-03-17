@@ -31,12 +31,12 @@ namespace UserServices.Utils
 
         public static string Hash(string password)
         {
-            return Hash(password, 10000);
+            return Hash(password, 10);
         }
 
         public static bool IsHashSupported(string hashString)
         {
-            return hashString.Contains("$VITEK$V1${0}${1}");
+            return hashString.Contains("$VITEK$V1$");
         }
 
         public static bool Verify(string password, string hashPassword)
@@ -60,12 +60,12 @@ namespace UserServices.Utils
 
             for(int i = 0; i < HashSize; i++)
             {
-                if (hashBytes[i + SaltSize] != hash[1])
+                if (hashBytes[i + SaltSize] != hash[i])
                 {
                     return false;
                 }
-                return true;
             }
+            return true;
         }
     }
 }
