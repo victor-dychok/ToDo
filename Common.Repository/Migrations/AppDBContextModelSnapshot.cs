@@ -22,7 +22,7 @@ namespace Common.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Common.Domain.User", b =>
+            modelBuilder.Entity("Common.Domain.AppUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,6 +45,63 @@ namespace Common.Repository.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Common.Domain.AppUserAppRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AppUserAppRole");
+                });
+
+            modelBuilder.Entity("Common.Domain.AppUserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUserRole");
+                });
+
+            modelBuilder.Entity("Common.Domain.RefreshToken", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("ToDoDomain.TodoItem", b =>
@@ -82,15 +139,55 @@ namespace Common.Repository.Migrations
                     b.ToTable("ToDoItems");
                 });
 
-            modelBuilder.Entity("ToDoDomain.TodoItem", b =>
+            modelBuilder.Entity("Common.Domain.AppUserAppRole", b =>
                 {
-                    b.HasOne("Common.Domain.User", "User")
+                    b.HasOne("Common.Domain.AppUserRole", "Role")
+                        .WithMany("AppUserAppRole")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Common.Domain.AppUser", "User")
+                        .WithMany("AppUserAppRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Common.Domain.RefreshToken", b =>
+                {
+                    b.HasOne("Common.Domain.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ToDoDomain.TodoItem", b =>
+                {
+                    b.HasOne("Common.Domain.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Common.Domain.AppUser", b =>
+                {
+                    b.Navigation("AppUserAppRoles");
+                });
+
+            modelBuilder.Entity("Common.Domain.AppUserRole", b =>
+                {
+                    b.Navigation("AppUserAppRole");
                 });
 #pragma warning restore 612, 618
         }

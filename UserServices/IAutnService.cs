@@ -9,6 +9,7 @@ namespace UserServices
 {
     public interface IAutnService
     {
-        public Task<string> GetJwtTokenAsync(AuthDto auth);
+        public Task<JwtTokenDto> GetJwtTokenAsync(AuthDto auth, CancellationToken cancellationToken = default);
+        public Task<JwtTokenDto> GetJwtByRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default);
     }
 }

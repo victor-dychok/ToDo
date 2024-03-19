@@ -72,5 +72,12 @@ namespace Common.Repository
             set.Remove(item);
             return await _applicationDbContext.SaveChangesAsync() > 0;
         }
+
+        public async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default)
+        {
+            var set = _applicationDbContext.Set<TEntity>();
+            return predicate == null ? await set.FirstOrDefaultAsync(cancellationToken) : await set.FirstOrDefaultAsync(predicate, cancellationToken);
+
+        }
     }
 }

@@ -18,9 +18,12 @@ namespace UserServices
     {
         public static IServiceCollection AddUserServices(this IServiceCollection services)
         {
-            services.AddTransient<IRepository<User>, SqlServerBaseReository<User>>();
+            services.AddTransient<IRepository<AppUser>, SqlServerBaseReository<AppUser>>();
             services.AddTransient<IUserService, UserService>(); 
             services.AddTransient<IAutnService, AuthService>();
+            services.AddTransient<IRepository<AppUserRole>, SqlServerBaseReository<AppUserRole>>();
+            services.AddTransient<IRepository<RefreshToken>, SqlServerBaseReository<RefreshToken>>();
+            services.AddTransient<IRepository<AppUserAppRole>, SqlServerBaseReository<AppUserAppRole>>();
             services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() }, includeInternalTypes: true);
             object value = services.AddAutoMapper(typeof(AutoMapperProfile));
 

@@ -28,6 +28,13 @@ namespace UserAPI.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("RefreshJwtToken")]
+        public async Task<IActionResult> Post(string jwtToken, CancellationToken cancellation)
+        {
+            var token = await _authService.GetJwtByRefreshTokenAsync(jwtToken, cancellation);
+            return Ok(token);
+        }
+
         [HttpGet("GetMyInfo")]
         public async Task<IActionResult> GetMyInfo(CancellationToken cancellationToken)
         {

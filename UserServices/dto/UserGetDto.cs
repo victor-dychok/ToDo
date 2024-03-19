@@ -9,6 +9,6 @@ namespace UserServices.dto
     public class UserGetDto
     {
         public int Id { get; set; }
-        string Login { get; set; }
+        public string Login { get; set; } = default!;
     }
 }

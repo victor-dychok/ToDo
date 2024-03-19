@@ -13,7 +13,7 @@ namespace ToDoDomain
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int OwnerId { get; set; }
-        public virtual User User { get; set; }
+        public virtual AppUser User { get; set; }
 
         public TodoItem() { }
         public TodoItem(int id, string label, bool isDone, DateTime createdDate, DateTime updatedDate, int ownerId)

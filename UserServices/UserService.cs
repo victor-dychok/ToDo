@@ -13,11 +13,15 @@ namespace UserServices
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<AppUser> _userRepository;
+        private readonly IRepository<AppUserRole> _userRoles;
+        private readonly IRepository<AppUserAppRole> _appUR;
         private readonly IMapper _mapper;
-        public UserService(IRepository<User> users, IMapper mapper)
+        public UserService(IRepository<AppUser> users, IRepository<AppUserRole> userRole, IRepository<AppUserAppRole> appUR, IMapper mapper)
         {
+            _userRoles = userRole;
             _userRepository = users;
+            _appUR = appUR;
             _mapper = mapper;
         }
 
@@ -27,28 +31,35 @@ namespace UserServices
             {
                 throw new BadRequestExeption("This login is alreadi taken");
             }
-            var entity = new User()
+            var entity = new AppUser()
             {
                 Login = item.Login,
                 PasswordHash = PasswordHashUtil.Hash(item.Password),
             };
-            
+
             var addedItem = await _userRepository.AddAsync(entity, token);
             if(addedItem is null)
             {
                 throw new BadRequestExeption("Can not add user");
             }
+
+            var role = await _userRoles.SingleOrDefaultAsync(i => i.Name == "Admin");
+            var appUR = await _appUR.AddAsync(new AppUserAppRole { 
+                Role = role,
+                User = addedItem
+            }, token);
+
             return _mapper.Map<UserGetDto>(addedItem);
         }
 
         public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
         {
-            var item = await GetByIdOrDefaultAsync(id);
-            if(item == null)
+            var item = await _userRepository.SingleOrDefaultAsync(u => u.Id == id);
+            if (item == null)
             {
                 throw new NotFoundExeption(new {Id = id});
             }
-            return await _userRepository.DeleteAsync(_mapper.Map<User>(item), token);
+            return await _userRepository.DeleteAsync(item, token);
         }
 
         public async Task<UserGetDto> GetByIdOrDefaultAsync(int id, CancellationToken token = default)
@@ -72,7 +83,7 @@ namespace UserServices
 
         public async Task<UserGetDto> UpdateAsync(UserDto newItem, CancellationToken token = default)
         {
-            var user = _mapper.Map<UserDto, User>(newItem);
+            var user = _mapper.Map<UserDto, AppUser>(newItem);
             user.PasswordHash = "qwe323r43t";
             var item = await _userRepository.UpdateAsync(user, token);
             if(item is null)

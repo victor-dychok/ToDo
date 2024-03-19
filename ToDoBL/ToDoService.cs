@@ -18,11 +18,11 @@ namespace ToDoBL
     public class ToDoService : IToDoService
     {
         private readonly IRepository<TodoItem> _toDoRepository;
-        private readonly IRepository<User> _users;
+        private readonly IRepository<AppUser> _users;
         private readonly IMapper _mapper;
         public ToDoService(
             IRepository<TodoItem> repository,
-            IRepository<User> user,
+            IRepository<AppUser> user,
             IMapper mapper)
         {
             _mapper = mapper;

@@ -26,6 +26,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "UserAPI.Controllers.AuthController",
+    "Method": "Post",
+    "RelativePath": "Auth/RefreshJwtToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jwtToken",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UserAPI.Controllers.UserController",
     "Method": "GetAll",
     "RelativePath": "users",

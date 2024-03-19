@@ -18,6 +18,7 @@ namespace Common.Repository
             bool? destinct = null,
             CancellationToken token = default);
         Task<TEntity?> SingleOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
+        Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
         Task<TEntity?> AddAsync(TEntity item, CancellationToken cancellationToken = default);
         Task<TEntity?> UpdateAsync(TEntity item, CancellationToken cancellationToken = default);
         Task<bool> DeleteAsync(TEntity item, CancellationToken token = default);

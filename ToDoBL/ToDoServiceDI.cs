@@ -23,7 +23,10 @@ namespace ToDoBL
 
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IRepository<TodoItem>, SqlServerBaseReository<TodoItem>>();
-            services.AddScoped<IRepository<User>, SqlServerBaseReository<User>>();
+            services.AddScoped<IRepository<AppUser>, SqlServerBaseReository<AppUser>>();
+            services.AddScoped<IRepository<AppUserAppRole>, SqlServerBaseReository<AppUserAppRole>>();
+            services.AddTransient<IRepository<RefreshToken>, SqlServerBaseReository<RefreshToken>>();
+            services.AddScoped<IRepository<AppUserRole>, SqlServerBaseReository<AppUserRole>>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly()}, includeInternalTypes: true);

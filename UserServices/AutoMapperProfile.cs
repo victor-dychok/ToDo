@@ -13,9 +13,9 @@ namespace UserServices
     {
         public AutoMapperProfile() 
         {
-            CreateMap<UserDto, User>();
-            CreateMap<UserGetDto, User>();
-            CreateMap<User, UserGetDto>();
+            CreateMap<UserDto, AppUser>();
+            CreateMap<UserGetDto, AppUser>();
+            CreateMap<AppUser, UserGetDto>();
         }
     }
 }
